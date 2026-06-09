@@ -28,7 +28,9 @@ export const services: ServiceItem[] = [
       "SIM ghép đôi DB: 250k — dùng cho máy từ 14 trở lên.",
       "Hướng dẫn khách cách lắp và kích hoạt SIM ghép (có video hỗ trợ).",
     ],
-    notes: ["Gửi link video 'Cách sử dụng SIM ghép 1 SIM / 2 SIM' khi khách cần."],
+    notes: [
+      "Gửi link video 'Cách sử dụng SIM ghép 1 SIM / 2 SIM' khi khách cần.",
+    ],
   },
   {
     id: "skip-mdm",
@@ -41,7 +43,7 @@ export const services: ServiceItem[] = [
       "Tặng kèm tool skip MDM miễn phí, bảo hành skip trọn đời máy.",
     ],
     notes: [
-      "Cảnh báo khách KHÔNG reset dòng 2 — nếu reset máy sẽ khóa lại, cần tài khoản MDM để kích hoạt.",
+      "Cảnh báo khách KHÔNG reset dòng 2 — nếu reset máy sẽ khóa lại, cần máy tính để skip MDM.",
     ],
   },
   {

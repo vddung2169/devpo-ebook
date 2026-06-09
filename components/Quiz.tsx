@@ -8,7 +8,7 @@ import { ProgressBar } from "./Card";
 import { Badge } from "./Badge";
 import { Icon } from "./Icon";
 
-const QUIZ_SIZE = 10;
+const QUIZ_SIZE = 30;
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -22,23 +22,26 @@ function shuffle<T>(arr: T[]): T[] {
 export function Quiz() {
   const [seed, setSeed] = useState(0);
   const quiz = useMemo<QuizQuestion[]>(
-    () => shuffle(allQuestions).slice(0, Math.min(QUIZ_SIZE, allQuestions.length)),
+    () =>
+      shuffle(allQuestions).slice(0, Math.min(QUIZ_SIZE, allQuestions.length)),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [seed]
+    [seed],
   );
 
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>(
-    Array(quiz.length).fill(null)
+    Array(quiz.length).fill(null),
   );
-  const [revealed, setRevealed] = useState<boolean[]>(Array(quiz.length).fill(false));
+  const [revealed, setRevealed] = useState<boolean[]>(
+    Array(quiz.length).fill(false),
+  );
   const [finished, setFinished] = useState(false);
 
   const answeredCount = answers.filter((a) => a !== null).length;
   const completion = (answeredCount / quiz.length) * 100;
   const score = quiz.reduce(
     (s, q, i) => (answers[i] === q.correctAnswer ? s + 1 : s),
-    0
+    0,
   );
 
   const restart = () => {
@@ -54,7 +57,8 @@ export function Quiz() {
     setAnswers((prev) => prev.map((a, k) => (k === index ? i : a)));
   };
 
-  const reveal = () => setRevealed((prev) => prev.map((r, k) => (k === index ? true : r)));
+  const reveal = () =>
+    setRevealed((prev) => prev.map((r, k) => (k === index ? true : r)));
 
   const next = () => {
     if (index < quiz.length - 1) setIndex(index + 1);
@@ -63,14 +67,13 @@ export function Quiz() {
 
   if (finished) {
     const pct = Math.round((score / quiz.length) * 100);
-    const tone =
-      pct >= 80 ? "green" : pct >= 50 ? "amber" : "red";
+    const tone = pct >= 80 ? "green" : pct >= 50 ? "amber" : "red";
     const msg =
       pct >= 80
         ? "Xuất sắc! Bạn đã nắm vững cẩm nang."
         : pct >= 50
-        ? "Khá ổn — ôn lại các phần sai để chắc hơn."
-        : "Cần ôn lại kỹ phần Kiến thức và Chính sách.";
+          ? "Khá ổn — ôn lại các phần sai để chắc hơn."
+          : "Cần ôn lại kỹ phần Kiến thức và Chính sách.";
 
     return (
       <div className="space-y-6">
@@ -93,10 +96,15 @@ export function Quiz() {
         </div>
 
         <div>
-          <h3 className="mb-4 font-display text-lg font-bold">Xem lại đáp án</h3>
+          <h3 className="mb-4 font-display text-lg font-bold">
+            Xem lại đáp án
+          </h3>
           <div className="space-y-5">
             {quiz.map((q, i) => (
-              <div key={q.id} className="surface rounded-2xl border p-5 shadow-card">
+              <div
+                key={q.id}
+                className="surface rounded-2xl border p-5 shadow-card"
+              >
                 <div className="mb-2 flex items-center gap-2">
                   <span className="muted font-mono text-xs">Câu {i + 1}</span>
                   {answers[i] === q.correctAnswer ? (
