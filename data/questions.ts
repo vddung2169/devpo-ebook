@@ -1,0 +1,153 @@
+import type { QuizQuestion } from "@/types";
+
+export const questions: QuizQuestion[] = [
+  {
+    id: "q1",
+    question: "Sản phẩm chủ yếu của cửa hàng DEV PỒ là loại máy nào?",
+    options: ["Máy Quốc tế", "Máy Lock Mỹ", "Máy MDM doanh nghiệp", "Máy Quốc tế nửa mùa"],
+    correctAnswer: 1,
+    explanation: "Cẩm nang nêu rõ sản phẩm chủ yếu là máy Lock Mỹ, thân máy không kèm hộp.",
+    category: "Sản phẩm",
+    difficulty: "Dễ",
+  },
+  {
+    id: "q2",
+    question: "Máy Lock có đặc điểm nào sau đây?",
+    options: [
+      "Dùng được mọi SIM toàn thế giới",
+      "Là máy nhà mạng nước ngoài bị khóa mạng, không dùng eSIM thông thường",
+      "Luôn dùng được 2 eSIM mà không cần can thiệp",
+      "Không bao giờ dùng được SIM Việt Nam",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "Máy Lock là máy nhà mạng nước ngoài bị khóa mạng, không dùng eSIM; cần SIM ghép hoặc độ EID/CNC để dùng SIM.",
+    category: "Loại máy",
+    difficulty: "Dễ",
+  },
+  {
+    id: "q3",
+    question: "iPhone 13 (bản Lock) độ EID được mấy SIM vật lý?",
+    options: ["Không độ được", "1 SIM", "2 SIM", "3 SIM"],
+    correctAnswer: 2,
+    explanation: "Theo cẩm nang, iPhone 13 độ được EID 2 SIM vật lý; còn 13 Pro/Pro Max thì chưa độ được.",
+    category: "SIM & Sóng",
+    difficulty: "Trung bình",
+  },
+  {
+    id: "q4",
+    question: "Máy đã CNC độ EID còn khả năng chống nước tiêu chuẩn không?",
+    options: [
+      "Còn nguyên áp zin",
+      "Mất áp zin, nhưng vẫn đi mưa/dùng bình thường",
+      "Tốt hơn máy zin",
+      "Không dùng được khi trời mưa",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "CNC để độ khay SIM làm mất áp zin (mất kháng nước tiêu chuẩn), nhưng máy vẫn đi mưa và dùng bình thường.",
+    category: "Kỹ thuật",
+    difficulty: "Trung bình",
+  },
+  {
+    id: "q5",
+    question: 'Giá niêm yết trên web đã bao gồm gói "Full phụ kiện" gồm những gì?',
+    options: [
+      "Sạc + tai nghe + ốp",
+      "Bộ sạc + ốp lưng + cường lực",
+      "Ốp lưng + cường lực + bao da",
+      "Sạc + cáp + củ sạc nhanh",
+    ],
+    correctAnswer: 1,
+    explanation: 'Gói "Full phụ kiện" gồm bộ sạc, ốp lưng và cường lực.',
+    category: "Giá & Phụ kiện",
+    difficulty: "Dễ",
+  },
+  {
+    id: "q6",
+    question: "Khách không lấy bộ sạc thì được giảm bao nhiêu?",
+    options: ["-50k", "-100k", "-150k", "Không giảm"],
+    correctAnswer: 1,
+    explanation: "Không lấy bộ sạc giảm 100k; không lấy ốp + cường lực giảm 50k.",
+    category: "Giá & Phụ kiện",
+    difficulty: "Dễ",
+  },
+  {
+    id: "q7",
+    question: "Với Ship COD, phí COD được tính như thế nào?",
+    options: [
+      "1.5% trên tổng giá máy",
+      "1.5% trên số tiền thu hộ (phần còn lại sau cọc)",
+      "2.5% trên số tiền thu hộ",
+      "Cố định 50k mỗi đơn",
+    ],
+    correctAnswer: 1,
+    explanation: "Phí COD là 1.5% trên số tiền thu hộ — tức phần còn lại sau khi trừ cọc; cộng thêm tiền ship.",
+    category: "Thanh toán",
+    difficulty: "Khó",
+  },
+  {
+    id: "q8",
+    question: "Phí quẹt thẻ Visa khi thanh toán Offline tại cửa hàng là bao nhiêu?",
+    options: ["1%", "1.5%", "2.5%", "Miễn phí"],
+    correctAnswer: 0,
+    explanation: "Offline: Visa 1%, Mastercard 1.5%. Online cả hai đều 2.5%.",
+    category: "Thanh toán",
+    difficulty: "Trung bình",
+  },
+  {
+    id: "q9",
+    question: "Gói bảo hành PRO (989k) có thời hạn 1 đổi 1 là bao lâu?",
+    options: ["7 ngày", "30 ngày", "60 ngày", "6 tháng"],
+    correctAnswer: 2,
+    explanation: "Gói PRO: 1 đổi 1 60 ngày, phần cứng 6 tháng, độ SIM/CNC 2 năm.",
+    category: "Bảo hành",
+    difficulty: "Trung bình",
+  },
+  {
+    id: "q10",
+    question: "Trường hợp nào KHÔNG bị từ chối bảo hành?",
+    options: [
+      "Máy bị vào nước, ẩm mốc",
+      "Máy còn nguyên tem, không can thiệp vật lý",
+      "Máy bị rách tem bảo hành",
+      "Máy bị móp méo, rơi vỡ",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "Điều kiện bảo hành: máy còn nguyên tem và không bị can thiệp vật lý. Các trường hợp còn lại đều bị từ chối.",
+    category: "Bảo hành",
+    difficulty: "Trung bình",
+  },
+  {
+    id: "q11",
+    question: "Với máy MDM, nhân viên cần dặn khách điều gì quan trọng nhất?",
+    options: [
+      "Phải cập nhật iOS mỗi tuần",
+      "Không được reset dòng 2 (Xóa tất cả nội dung và cài đặt)",
+      "Không được dùng SIM Việt Nam",
+      "Phải sạc đủ 100% trước khi dùng",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "Máy MDM nếu reset dòng 2 sẽ bị khóa lại và yêu cầu tài khoản MDM để kích hoạt. Tặng kèm tool skip MDM, bảo hành trọn đời.",
+    category: "Loại máy",
+    difficulty: "Khó",
+  },
+  {
+    id: "q12",
+    question:
+      'Khách báo "SIM không được hỗ trợ" sau khi update máy. Cách xử lý đúng là gì?',
+    options: [
+      "Yêu cầu khách mang máy đi sửa ngay",
+      "Yêu cầu khách tháo SIM, active vào rồi lắp SIM lại",
+      "Hướng dẫn reset dòng 2",
+      "Bảo khách đổi nhà mạng",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "Lỗi thường do không tháo SIM khi update/reset dòng 2. Xử lý: tháo SIM, active vào, rồi lắp lại SIM.",
+    category: "Sự cố",
+    difficulty: "Trung bình",
+  },
+];
