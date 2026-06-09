@@ -40,7 +40,11 @@ export const paymentMethods: PaymentMethod[] = [
       "Khách thanh toán số tiền còn lại + phí cho bưu tá.",
     ],
     fees: [
-      { label: "Phí COD", value: "1.5%", hint: "Trên số tiền thu hộ (phần còn lại sau cọc)" },
+      {
+        label: "Phí COD",
+        value: "1.5%",
+        hint: "Trên số tiền thu hộ (phần còn lại sau cọc)",
+      },
       { label: "Tiền ship", value: "Tùy ĐVVC" },
     ],
     notes: [
@@ -51,7 +55,7 @@ export const paymentMethods: PaymentMethod[] = [
 
 // 2.3 Phí quẹt thẻ
 export const cardFees: PriceRow[] = [
-  { label: "Offline — Visa", value: "1%" },
+  { label: "Offline — Visa", value: "1.5%" },
   { label: "Offline — Mastercard", value: "1.5%" },
   { label: "Online — Visa / Mastercard", value: "2.5%" },
 ];
@@ -63,8 +67,11 @@ export const installments: InstallmentPlan[] = [
     name: "Trả góp qua iCloud — TC APPLE",
     channel: "Online & Offline",
     rows: [
-      { label: "Thời gian vay", value: "Tối đa 6 tháng (QTE) · 3 tháng (LOCK)" },
-      { label: "Trả trước", value: "60% giá trị máy" },
+      {
+        label: "Thời gian vay",
+        value: "Tối đa 6 tháng (QTE) · 3 tháng (LOCK)",
+      },
+      { label: "Trả trước", value: "~50% giá trị máy" },
       { label: "Lãi suất", value: "~8%/tháng trên nợ gốc" },
       {
         label: "Phí tất toán sớm (7 ngày đầu)",
@@ -99,7 +106,26 @@ export const installments: InstallmentPlan[] = [
     rows: [
       { label: "Đối tượng", value: "Nam / Nữ từ đủ 18 tuổi" },
       { label: "Trả trước", value: "20% – 40% (trả 40% để có lãi ưu đãi hơn)" },
-      { label: "Lãi suất", value: "Theo bảng tính riêng của công ty tài chính" },
+      {
+        label: "Lãi suất",
+        value: "Theo bảng tính riêng của công ty tài chính",
+      },
+    ],
+    notes: [
+      "Nhân viên nhắn nhóm nội bộ, nhân viên công ty tài chính qua cửa hàng hỗ trợ khách làm hồ sơ.",
+    ],
+  },
+  {
+    id: "cccd-hd",
+    name: "Trả góp qua CCCD — Công ty tài chính HD Saison",
+    channel: "Chỉ Offline (tại cửa hàng)",
+    rows: [
+      { label: "Đối tượng", value: "Nam / Nữ từ đủ 18 tuổi" },
+      { label: "Trả trước", value: "Tối thiểu 10%" },
+      {
+        label: "Lãi suất",
+        value: "Theo bảng tính riêng của công ty tài chính",
+      },
     ],
     notes: [
       "Nhân viên nhắn nhóm nội bộ, nhân viên công ty tài chính qua cửa hàng hỗ trợ khách làm hồ sơ.",
@@ -110,7 +136,10 @@ export const installments: InstallmentPlan[] = [
     name: "Trả góp qua thẻ tín dụng",
     channel: "Online & Offline",
     rows: [
-      { label: "Quy trình & lãi suất", value: "Theo biểu phí chuyển đổi của ngân hàng phát hành thẻ" },
+      {
+        label: "Quy trình & lãi suất",
+        value: "Theo biểu phí chuyển đổi của ngân hàng phát hành thẻ",
+      },
     ],
     notes: [],
   },

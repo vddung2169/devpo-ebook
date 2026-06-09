@@ -69,9 +69,7 @@ export const iphones: IPhoneModel[] = [
     eid: "Chưa độ được EID",
     waterproof: "Áp zin nếu chưa can thiệp phần cứng",
     simCost: "SIM ghép Pronew 5.7: 150k",
-    highlights: [
-      "Chưa độ được EID — dùng 1 SIM vật lý kèm SIM ghép.",
-    ],
+    highlights: ["Chưa độ được EID — dùng 1 SIM vật lý kèm SIM ghép."],
     notes: [],
   },
   {
@@ -102,6 +100,21 @@ export const iphones: IPhoneModel[] = [
     notes: [],
   },
   {
+    id: "ip14pm",
+    name: "iPhone 14Pro / 14 ProMax",
+    series: "14",
+    tier: "Pro",
+    simSupport: "Bản Lock: 2 SIM vật lý sau khi CNC độ EID",
+    eid: "CNC độ EID để dùng 2 SIM",
+    waterproof: "Mất áp zin sau khi CNC độ EID",
+    simCost: "Khách cửa hàng: 800k · Khách ngoài: 1tr (độ lại EID: 500k)",
+    highlights: [
+      "Nhóm iP > 14: vỏ máy được CNC để thêm khay SIM, dùng được 2 SIM.",
+      "SIM ghép đôi DB (250k) áp dụng cho máy từ 14 trở lên.",
+    ],
+    notes: [],
+  },
+  {
     id: "ip15",
     name: "iPhone 15 / 15 Plus",
     series: "15",
@@ -110,7 +123,9 @@ export const iphones: IPhoneModel[] = [
     eid: "CNC độ EID để dùng 2 SIM",
     waterproof: "Mất áp zin sau khi CNC độ EID",
     simCost: "Khách cửa hàng: 800k · Khách ngoài: 1tr (độ lại EID: 500k)",
-    highlights: ["Cùng nhóm chi phí với 14 / 15 Plus: cửa hàng 800k, ngoài 1tr."],
+    highlights: [
+      "Cùng nhóm chi phí với 14 / 15 Plus: cửa hàng 800k, ngoài 1tr.",
+    ],
     notes: [],
   },
   {
@@ -148,8 +163,10 @@ export const iphones: IPhoneModel[] = [
     simSupport: "Bản Lock: hiện đang CNC dùng SIM ghép",
     eid: "Đang phải CNC dùng SIM ghép",
     waterproof: "Mất áp zin sau khi CNC",
-    simCost: "SIM ghép đôi DB: 250k",
-    highlights: ["Khác biệt so với dòng 16: 16E đang phải CNC để dùng SIM ghép."],
+    simCost: "",
+    highlights: [
+      "Khác biệt so với dòng 16: 16E đang phải CNC để dùng SIM ghép. Dùng được 1 sim vật lý",
+    ],
     notes: [],
   },
   {
@@ -177,6 +194,20 @@ export const iphones: IPhoneModel[] = [
     notes: [],
   },
   {
+    id: "ip17e",
+    name: "iPhone 17E",
+    series: "17",
+    tier: "E",
+    simSupport: "Bản Lock: hiện đang CNC dùng SIM ghép",
+    eid: "Đang phải CNC dùng SIM ghép",
+    waterproof: "Mất áp zin sau khi CNC",
+    simCost: "",
+    highlights: [
+      "Khác biệt so với dòng 17: 17E đang phải CNC để dùng SIM ghép. Dùng được 1 sim vật lý",
+    ],
+    notes: [],
+  },
+  {
     id: "ip17air",
     name: "iPhone 17 Air",
     series: "17",
@@ -184,7 +215,9 @@ export const iphones: IPhoneModel[] = [
     simSupport: "Bản Lock: chưa độ được EID",
     eid: "Chưa độ được EID",
     waterproof: "Áp zin nếu chưa can thiệp phần cứng",
-    highlights: ["17 Air chưa độ được EID — cần lưu ý khi tư vấn khách dùng 2 SIM."],
+    highlights: [
+      "17 Air chưa độ được EID — cần lưu ý khi tư vấn khách dùng 2 SIM.",
+    ],
     notes: [],
   },
   {
