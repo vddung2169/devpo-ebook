@@ -334,22 +334,6 @@ export const questions: QuizQuestion[] = [
     difficulty: "Trung bình",
   },
   {
-    id: "q26",
-    question:
-      "Trả góp iCloud qua A TÂM: nếu khách góp đủ 6 tháng thì được ưu đãi gì?",
-    options: [
-      "Giảm lãi 1 tháng",
-      "Giảm lãi 2 tháng",
-      "Miễn toàn bộ lãi",
-      "Tặng phụ kiện",
-    ],
-    correctAnswer: 1,
-    explanation:
-      "A TÂM: góp 5 tháng giảm lãi 1 tháng, góp 6 tháng giảm lãi 2 tháng. Có phí lên hồ sơ 10% trả ngay lúc mua.",
-    category: "Thanh toán",
-    difficulty: "Khó",
-  },
-  {
     id: "q27",
     question:
       "Trả góp qua CCCD (công ty tài chính MIRA / HD Saison) có đặc điểm nào?",

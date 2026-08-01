@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Menu, Smartphone } from "lucide-react";
+import Image from "next/image";
+import { Menu } from "lucide-react";
 
 import { CommandMenu } from "@/components/docs/command-menu";
 import { SidebarNav } from "@/components/docs/sidebar-nav";
@@ -15,6 +16,20 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+
+/** Logo DEV PỒ — bản gốc màu trắng; light mode dùng filter invert để thành đen */
+function Logo({ className }: { className?: string }) {
+  return (
+    <Image
+      src="/logo.png"
+      alt="DEV PỒ"
+      width={564}
+      height={128}
+      priority
+      className={className ?? "h-6 w-auto invert dark:invert-0"}
+    />
+  );
+}
 
 export function SiteHeader() {
   const [open, setOpen] = React.useState(false);
@@ -42,19 +57,17 @@ export function SiteHeader() {
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="mb-4 flex items-center gap-2 px-2 font-semibold"
+              className="mb-4 flex items-center px-2"
             >
-              <Smartphone className="h-5 w-5" />
-              DEV PỒ
+              <Logo className="h-5 w-auto invert dark:invert-0" />
             </Link>
             <SidebarNav onNavigate={() => setOpen(false)} />
           </SheetContent>
         </Sheet>
 
-        <Link href="/" className="flex items-center gap-2 font-semibold">
-          <Smartphone className="h-5 w-5" />
-          <span className="hidden sm:inline">DEV PỒ</span>
-          <span className="hidden text-sm font-normal text-muted-foreground md:inline">
+        <Link href="/" className="flex items-center gap-2">
+          <Logo />
+          <span className="hidden text-sm text-muted-foreground md:inline">
             · Cẩm nang nội bộ
           </span>
         </Link>

@@ -45,7 +45,7 @@ export const paymentMethods: PaymentMethod[] = [
         value: "1.5%",
         hint: "Trên số tiền thu hộ (phần còn lại sau cọc)",
       },
-      { label: "Tiền ship", value: "Tùy ĐVVC" },
+      { label: "Tiền ship", value: "Tùy đơn vị vận chuyển" },
     ],
     notes: [
       "Ví dụ: máy 11tr, cọc 2tr → thu hộ 9tr → phí = (1.5% × 9tr) + phí ship.",
