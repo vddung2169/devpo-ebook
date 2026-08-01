@@ -23,7 +23,7 @@ function Logo({ className }: { className?: string }) {
     <Image
       src="/logo.png"
       alt="DEV PỒ"
-      width={564}
+      width={498}
       height={128}
       priority
       className={className ?? "h-6 w-auto invert dark:invert-0"}
