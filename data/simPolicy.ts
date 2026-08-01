@@ -13,12 +13,11 @@ export const simPolicy: SimGroup[] = [
     id: "lock-duoi-14",
     group: "Lock — iP < 14 (dùng SIM ghép / độ EID)",
     rows: [
-      { label: "Độ EID — iPhone 12 / 13", value: "2 SIM", hint: "Theo bảng chi phí SIM" },
-      { label: "Độ EID — iPhone 12 Pro / 12 Pro Max", value: "1 SIM" },
+      { label: "Độ EID — iPhone 13", value: "2 SIM" },
+      { label: "Độ EID — iPhone 12 / 12 Pro / 12 Pro Max", value: "1 SIM" },
       { label: "Độ EID — iPhone 13 Pro / 13 Pro Max", value: "Không độ được" },
       { label: "Chi phí độ EID", value: "500k" },
       { label: "SIM ghép 1 SIM Pronew 5.7", value: "150k", hint: "Tất cả dòng Lock" },
-      { label: "SIM ghép đôi DB", value: "250k", hint: "Dùng cho máy từ 14 trở lên" },
     ],
   },
   {
@@ -26,20 +25,21 @@ export const simPolicy: SimGroup[] = [
     group: "Lock — iP > 14 (dùng 2 SIM vật lý / eSIM)",
     rows: [
       {
-        label: "CNC + độ lại EID (đã CNC, độ lại)",
+        label: "CNC + độ lại EID (máy đã CNC nhưng chưa độ EID)",
         value: "500k",
         hint: "Riêng 16 Pro / 16 Pro Max: 800k",
       },
-      { label: "Dòng 16 — khách cửa hàng", value: "1tr2" },
-      { label: "Dòng 16 — khách ngoài", value: "1tr5" },
-      { label: "14 / 15 / 15 Plus — khách cửa hàng", value: "800k" },
-      { label: "14 / 15 / 15 Plus — khách ngoài", value: "1tr" },
+      { label: "Dòng 16 series — khách cửa hàng / khách ngoài", value: "1tr2 / 1tr5" },
+      { label: "14 / 15 / 15 Plus — khách cửa hàng / khách ngoài", value: "800k / 1tr" },
       {
         label: "15 Pro / 15 Pro Max",
         value: "Đồng giá 1tr5",
         hint: "CNC 2 SIM vật lý hoặc độ 2 eSIM không cần CNC",
       },
-      { label: "17 — CNC 2 SIM (cửa hàng / ngoài)", value: "1tr2 / 1tr5" },
+      {
+        label: "17 (CNC 2 SIM vật lý / 2 eSIM) — khách cửa hàng / khách ngoài",
+        value: "1tr2 / 1tr5",
+      },
       {
         label: "17 Pro / 17 Pro Max — độ 2 eSIM (cửa hàng / ngoài)",
         value: "1tr5 / 2tr",
@@ -50,7 +50,10 @@ export const simPolicy: SimGroup[] = [
         value: "2tr / 2tr5",
       },
     ],
-    notes: ["16E đang phải CNC dùng SIM ghép."],
+    notes: [
+      "16E / 17E: dùng 2 SIM vật lý không cần kèm SIM ghép, nhưng vẫn là chế độ ghép TMSI, không phải EID.",
+      "17 Air: chưa độ được EID — độ được 1 SIM vật lý ghép chế độ TMSI.",
+    ],
   },
 ];
 
