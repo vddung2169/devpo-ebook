@@ -165,26 +165,26 @@ export const questions: QuizQuestion[] = [
   {
     id: "q13",
     question:
-      "Theo trang phân loại của cẩm nang, iPhone 12 / 12 Pro / 12 Pro Max (bản Lock) độ EID được mấy SIM vật lý?",
+      "iPhone 12 / 12 Pro / 12 Pro Max (bản Lock) độ EID được mấy SIM vật lý?",
     options: ["Không độ được", "1 SIM", "2 SIM", "3 SIM"],
     correctAnswer: 1,
     explanation:
-      "Trang phân loại ghi 12/12Pro/12ProMax độ EID 1 SIM. Lưu ý: bảng chi phí lại ghi 12/13 độ được 2 SIM — cần xác nhận lại khi tư vấn.",
+      "12/12Pro/12ProMax độ được EID 1 SIM vật lý; riêng iPhone 13 độ được EID 2 SIM.",
     category: "SIM & Sóng",
     difficulty: "Khó",
   },
   {
     id: "q14",
-    question: "iPhone 16E (bản Lock) hiện đang dùng SIM theo cách nào?",
+    question: "iPhone 16E / 17E (bản Lock) hiện đang dùng SIM theo cách nào?",
     options: [
-      "Độ EID 2 SIM như dòng 16 thường",
-      "Đang phải CNC để dùng SIM ghép",
+      "Độ EID 2 SIM như dòng thường",
+      "2 SIM vật lý không cần SIM ghép — nhưng là chế độ ghép TMSI, không phải EID",
       "Hỗ trợ 2 eSIM không cần can thiệp",
       "Không dùng được SIM nào",
     ],
     correctAnswer: 1,
     explanation:
-      "Khác với dòng 16 thường, 16E hiện đang phải CNC để dùng SIM ghép (ghép đôi DB 250k).",
+      "16E / 17E dùng 2 SIM vật lý không cần kèm SIM ghép, nhưng vẫn là chế độ ghép TMSI, không phải EID.",
     category: "SIM & Sóng",
     difficulty: "Khó",
   },
@@ -199,7 +199,7 @@ export const questions: QuizQuestion[] = [
     ],
     correctAnswer: 1,
     explanation:
-      "Cẩm nang nêu 13 Pro/13 Pro Max và 17 Air chưa độ được EID — dùng 1 SIM vật lý kèm SIM ghép.",
+      "13 Pro/13 Pro Max chưa độ được EID (dùng 1 SIM vật lý kèm SIM ghép). 17 Air cũng chưa độ được EID — chỉ độ được 1 SIM vật lý ghép chế độ TMSI.",
     category: "SIM & Sóng",
     difficulty: "Khó",
   },
@@ -219,22 +219,22 @@ export const questions: QuizQuestion[] = [
     options: ["100k", "150k", "250k", "500k"],
     correctAnswer: 1,
     explanation:
-      "SIM ghép Pronew 5.7 (1 SIM) giá 150k, áp dụng cho mọi dòng Lock. SIM ghép đôi DB là 250k.",
+      "SIM ghép Pronew 5.7 (1 SIM) giá 150k, áp dụng cho mọi dòng Lock.",
     category: "SIM & Sóng",
     difficulty: "Trung bình",
   },
   {
     id: "q18",
-    question: "SIM ghép đôi DB (250k) áp dụng cho dòng máy nào?",
+    question: "EID khác gì so với chế độ ghép TMSI?",
     options: [
-      "Mọi dòng Lock",
-      "Chỉ dòng 12 và 13",
-      "Máy từ iP 14 trở lên",
-      "Chỉ dòng Pro Max",
+      "EID vẫn phải dùng kèm SIM ghép",
+      "EID dùng không cần SIM ghép, full 100% tính năng như Quốc tế; TMSI bản chất vẫn là ghép",
+      "TMSI là tên gọi khác của EID",
+      "TMSI chỉ dùng cho máy Quốc tế",
     ],
-    correctAnswer: 2,
+    correctAnswer: 1,
     explanation:
-      "SIM ghép đôi DB (250k) dùng cho máy từ 14 trở lên; còn SIM ghép Pronew 5.7 (150k) dùng cho mọi dòng Lock.",
+      "EID là chế độ SIM mới trên iPhone Lock: không cần SIM ghép, dùng full tính năng như Quốc tế (kể cả CNC SIM vật lý hay độ eSIM). Còn 16E/17E/17 Air dùng chế độ ghép TMSI — bản chất vẫn là ghép, không phải EID.",
     category: "SIM & Sóng",
     difficulty: "Trung bình",
   },
@@ -290,13 +290,13 @@ export const questions: QuizQuestion[] = [
     question: "Hình thức Trả thẳng 100% có ưu đãi gì về vận chuyển?",
     options: [
       "Tính phí ship như bình thường",
-      "Freeship + free phí COD (Grab nội thành hỗ trợ 50k)",
+      "Freeship + free phí COD (Grab nội thành hỗ trợ tối đa 75k)",
       "Chỉ freeship nội thành",
       "Giảm 100k tiền máy",
     ],
     correctAnswer: 1,
     explanation:
-      "Trả thẳng 100%: freeship + free phí COD; nếu book Grab nội thành thì hỗ trợ 50k tiền ship.",
+      "Trả thẳng 100%: freeship + free phí COD; nếu book Grab nội thành thì hỗ trợ tối đa 75k tiền ship.",
     category: "Thanh toán",
     difficulty: "Dễ",
   },
@@ -325,11 +325,11 @@ export const questions: QuizQuestion[] = [
   {
     id: "q25",
     question:
-      "Trả góp qua iCloud (TC Apple / A Tâm) yêu cầu khách trả trước bao nhiêu?",
+      "Trả góp qua iCloud (A Tâm) yêu cầu khách trả trước tối thiểu bao nhiêu?",
     options: ["20%", "40%", "60% giá trị máy", "100%"],
     correctAnswer: 2,
     explanation:
-      "Trả góp qua iCloud yêu cầu trả trước khoảng 60% giá trị máy, lãi ~8%/tháng trên nợ gốc.",
+      "Trả góp qua iCloud (A Tâm) yêu cầu trả trước tối thiểu 60% giá trị máy, lãi 8%/tháng trên nợ gốc, phí lên hồ sơ 10% khoản vay.",
     category: "Thanh toán",
     difficulty: "Trung bình",
   },
@@ -351,16 +351,17 @@ export const questions: QuizQuestion[] = [
   },
   {
     id: "q27",
-    question: "Trả góp qua CCCD (công ty tài chính MIRA) có đặc điểm nào?",
+    question:
+      "Trả góp qua CCCD (công ty tài chính MIRA / HD Saison) có đặc điểm nào?",
     options: [
       "Làm được cả online lẫn offline",
-      "Chỉ offline tại cửa hàng, khách từ đủ 18 tuổi, trả trước 20–40%",
+      "Chỉ offline tại cửa hàng, khách từ đủ 18 tuổi, trả trước 10–20%",
       "Không cần trả trước",
       "Chỉ dành cho khách trên 25 tuổi",
     ],
     correctAnswer: 1,
     explanation:
-      "MIRA chỉ làm offline tại cửa hàng, khách nam/nữ từ đủ 18 tuổi, trả trước 20–40% (trả 40% lãi ưu đãi hơn).",
+      "MIRA / HD Saison chỉ làm offline tại cửa hàng, khách nam/nữ từ đủ 18 tuổi, trả trước tối thiểu 10–20% (trả trước càng nhiều hồ sơ càng dễ duyệt).",
     category: "Thanh toán",
     difficulty: "Khó",
   },
@@ -400,5 +401,37 @@ export const questions: QuizQuestion[] = [
       "Vào Cài đặt → Di động, ở cột SIM đang tắt thì bật lên là máy nhận đủ 2 SIM.",
     category: "Sự cố",
     difficulty: "Trung bình",
+  },
+  {
+    id: "q31",
+    question:
+      "Khách hỏi skip MDM, nhân viên cần hỏi rõ điều gì trước tiên (theo cập nhật từ tháng 4/2026)?",
+    options: [
+      "Máy màu gì",
+      "Máy có phải MDM vay hay không",
+      "Máy mua ở đâu",
+      "Máy còn bảo hành Apple không",
+    ],
+    correctAnswer: 1,
+    explanation:
+      "Từ tháng 4/2026 có dạng MDM vay — KHÔNG thể dùng tool để skip. Vì vậy phải hỏi rõ khách có phải MDM vay hay không. MDM thường thì shop nhận skip free, bảo hành trọn đời.",
+    category: "Loại máy",
+    difficulty: "Khó",
+  },
+  {
+    id: "q32",
+    question:
+      "Máy Quốc tế bản Mỹ từ 14 series trở lên dùng SIM theo cách nào?",
+    options: [
+      "1 SIM vật lý + 1 eSIM",
+      "2 SIM vật lý",
+      "2 eSIM",
+      "Chỉ 1 SIM vật lý",
+    ],
+    correctAnswer: 2,
+    explanation:
+      "Từ 14 series: bản Quốc tế Mỹ dùng 2 eSIM; bản VNA/KHA/ZPA dùng 1 SIM vật lý + 1 eSIM; bản ZA/A dùng 2 SIM vật lý. Từ Xr đến 13 series dùng 1 SIM vật lý + 1 eSIM.",
+    category: "Loại máy",
+    difficulty: "Khó",
   },
 ];

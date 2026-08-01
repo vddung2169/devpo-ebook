@@ -26,7 +26,7 @@ export const faqs: FaqItem[] = [
     id: "lock-dung-may-sim",
     question: "Máy Lock dùng được mấy SIM?",
     answer:
-      "Tùy dòng: 12/12Pro/12ProMax độ EID 1 SIM; 13 độ EID 2 SIM; 13Pro/13ProMax & 17 Air chưa độ được EID (dùng 1 SIM + SIM ghép); dòng > iP14 CNC độ EID dùng 2 SIM. 16E hiện phải CNC dùng SIM ghép.",
+      "Tùy dòng: 12/12Pro/12ProMax độ EID 1 SIM; 13 độ EID 2 SIM; 13Pro/13ProMax chưa độ được EID (dùng 1 SIM + SIM ghép); dòng > iP14 CNC độ EID dùng 2 SIM. 16E/17E dùng 2 SIM vật lý không cần SIM ghép (chế độ ghép TMSI, không phải EID); 17 Air độ được 1 SIM vật lý ghép TMSI.",
     category: "SIM & Sóng",
   },
   {
@@ -40,14 +40,14 @@ export const faqs: FaqItem[] = [
     id: "mdm-an-toan",
     question: "Máy MDM là gì, có an toàn để dùng không?",
     answer:
-      "Là máy doanh nghiệp đã được skip MDM, dùng như máy thường và tặng kèm tool skip miễn phí, bảo hành trọn đời. Lưu ý quan trọng: không được reset dòng 2 (Xóa tất cả nội dung và cài đặt), nếu reset máy sẽ khóa lại.",
+      "Là máy doanh nghiệp đã được skip MDM, dùng như máy thường và tặng kèm tool skip miễn phí, bảo hành trọn đời. Lưu ý quan trọng: không được reset dòng 2 (Xóa tất cả nội dung và cài đặt), nếu reset máy sẽ khóa lại. Từ 4/2026 có dạng MDM VAY không skip được bằng tool — phải hỏi rõ khách trước khi nhận skip.",
     category: "Loại máy",
   },
   {
     id: "tra-gop-can-gi",
     question: "Trả góp cần điều kiện gì?",
     answer:
-      "Qua iCloud: trả trước 60%, cần chứng minh công việc + thu nhập + CCCD gốc, lãi ~8%/tháng. Qua CCCD (MIRA): chỉ offline, đủ 18 tuổi, trả trước 20–40%. Qua thẻ tín dụng: theo biểu phí ngân hàng.",
+      "Qua iCloud (A Tâm): trả trước tối thiểu 60%, phí lên hồ sơ 10% khoản vay, lãi 8%/tháng, tối đa 6 tháng (máy update iOS cao nhất). Qua CCCD (MIRA/HD Saison): chỉ offline, đủ 18 tuổi, trả trước 10–20%. Qua thẻ tín dụng: theo biểu phí ngân hàng.",
     category: "Thanh toán",
   },
   {
@@ -93,6 +93,13 @@ export const faqs: FaqItem[] = [
     category: "Loại máy",
   },
   {
+    id: "quoc-te-may-sim",
+    question: "Máy Quốc tế dùng được mấy SIM?",
+    answer:
+      "Từ Xr đến 13 series: 1 SIM vật lý + 1 eSIM. Từ 14 series: bản Quốc tế Mỹ dùng 2 eSIM; bản VNA/KHA/ZPA dùng 1 SIM vật lý + 1 eSIM. Tất cả các dòng bản ZA/A dùng 2 SIM vật lý.",
+    category: "SIM & Sóng",
+  },
+  {
     id: "may-co-kem-hop",
     question: "Mua máy có kèm hộp không?",
     answer:
@@ -108,16 +115,16 @@ export const faqs: FaqItem[] = [
   },
   {
     id: "sim-ghep-loai-gia",
-    question: "SIM ghép có mấy loại, giá bao nhiêu?",
+    question: "SIM ghép giá bao nhiêu?",
     answer:
-      "Có 2 loại: SIM ghép 1 SIM Pronew 5.7 giá 150k (dùng cho tất cả dòng Lock); SIM ghép đôi DB giá 250k (dùng cho máy từ iP14 trở lên). Cửa hàng có video hướng dẫn cách lắp và kích hoạt gửi cho khách.",
+      "SIM ghép 1 SIM Pronew 5.7 giá 150k, dùng cho tất cả dòng Lock. Cửa hàng có video hướng dẫn cách lắp và kích hoạt gửi cho khách.",
     category: "SIM & Sóng",
   },
   {
     id: "chi-phi-do-eid-cnc",
     question: "Độ EID / CNC độ SIM giá bao nhiêu?",
     answer:
-      "Độ EID dòng iP < 14: 500k (16 Pro/Pro Max: 800k). Giá CNC tùy dòng và phân biệt khách cửa hàng / khách ngoài: 14/15/15 Plus 800k–1tr; dòng 16 1tr2–1tr5; 15 Pro/Pro Max đồng giá 1tr5; 17 CNC 2 SIM 1tr2–1tr5; 17 Pro/Pro Max độ 2 eSIM 1tr5–2tr (không cần CNC) hoặc CNC 2 SIM 2tr–2tr5.",
+      "Độ EID dòng iP < 14: 500k. Độ lại EID (máy đã CNC): 500k, riêng 16 Pro/Pro Max 800k. Giá CNC tùy dòng, phân biệt khách cửa hàng / khách ngoài: 14/15/15 Plus 800k–1tr; dòng 16 1tr2–1tr5; 15 Pro/Pro Max đồng giá 1tr5; 17 (CNC 2 SIM / 2 eSIM) 1tr2–1tr5; 17 Pro/Pro Max độ 2 eSIM 1tr5–2tr (không cần CNC) hoặc CNC 2 SIM 2tr–2tr5.",
     category: "SIM & Sóng",
   },
   {
@@ -145,14 +152,14 @@ export const faqs: FaqItem[] = [
     id: "tra-thang-phi-ship",
     question: "Trả thẳng 100% có mất phí ship và phí COD không?",
     answer:
-      "Không. Khách chuyển khoản đủ 100% giá trị máy trước khi giao thì được freeship + free phí COD. Book Grab nội thành cửa hàng hỗ trợ 50k tiền ship. STK nhận tiền: VU DUC DUNG — 19036185756012 — Techcombank.",
+      "Không. Khách chuyển khoản đủ 100% giá trị máy trước khi giao thì được freeship + free phí COD. Book Grab nội thành cửa hàng hỗ trợ tối đa 75k tiền ship. STK nhận tiền: VU DUC DUNG — 19036185756012 — Techcombank.",
     category: "Thanh toán",
   },
   {
     id: "tra-gop-cccd-cong-ty",
     question: "Trả góp qua CCCD có những công ty nào, trả trước bao nhiêu?",
     answer:
-      "Có 2 công ty tài chính, chỉ làm offline tại cửa hàng cho khách từ đủ 18 tuổi: MIRA trả trước 20–40% (trả 40% để có lãi ưu đãi hơn); HD Saison trả trước tối thiểu 10%. Lãi suất theo bảng tính riêng của từng công ty. Nhân viên nhắn nhóm nội bộ để công ty tài chính qua hỗ trợ làm hồ sơ.",
+      "Có 2 công ty tài chính MIRA và HD Saison, chỉ làm offline tại cửa hàng cho khách từ đủ 18 tuổi. Trả trước tối thiểu 10–20% giá trị máy — trả trước càng nhiều hồ sơ càng dễ duyệt. Lãi suất theo bảng tính riêng của công ty tài chính. Nhân viên nhắn nhóm nội bộ để công ty tài chính qua hỗ trợ làm hồ sơ.",
     category: "Thanh toán",
   },
   {
