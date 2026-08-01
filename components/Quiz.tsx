@@ -1,12 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { ArrowRight, RotateCcw } from "lucide-react";
+
 import { questions as allQuestions } from "@/data/questions";
 import type { QuizQuestion } from "@/types";
 import { QuestionCard } from "./QuestionCard";
-import { ProgressBar } from "./Card";
-import { Badge } from "./Badge";
-import { Icon } from "./Icon";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const QUIZ_SIZE = 30;
 
@@ -67,7 +68,8 @@ export function Quiz() {
 
   if (finished) {
     const pct = Math.round((score / quiz.length) * 100);
-    const tone = pct >= 80 ? "green" : pct >= 50 ? "amber" : "red";
+    const tone =
+      pct >= 80 ? "success" : pct >= 50 ? "warning" : ("destructive" as const);
     const msg =
       pct >= 80
         ? "Xuất sắc! Bạn đã nắm vững cẩm nang."
@@ -77,40 +79,38 @@ export function Quiz() {
 
     return (
       <div className="space-y-6">
-        <div className="surface rounded-2xl border p-6 text-center shadow-card sm:p-8">
-          <div className="muted font-mono text-xs uppercase tracking-widest">
+        <div className="rounded-lg border p-6 text-center sm:p-8">
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
             Kết quả
-          </div>
-          <div className="my-3 font-display text-5xl font-extrabold">
+          </p>
+          <p className="my-3 text-5xl font-bold">
             {score}
-            <span className="muted text-2xl">/{quiz.length}</span>
-          </div>
+            <span className="text-2xl text-muted-foreground">
+              /{quiz.length}
+            </span>
+          </p>
           <Badge variant={tone}>{pct}% đúng</Badge>
-          <p className="muted mx-auto mt-4 max-w-md text-sm">{msg}</p>
-          <button
-            onClick={restart}
-            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700 focus-visible:focus-ring"
-          >
-            <Icon name="arrow" size={16} /> Làm lại bộ câu hỏi mới
-          </button>
+          <p className="mx-auto mt-4 max-w-md text-sm text-muted-foreground">
+            {msg}
+          </p>
+          <Button onClick={restart} className="mt-6">
+            <RotateCcw /> Làm lại bộ câu hỏi mới
+          </Button>
         </div>
 
         <div>
-          <h3 className="mb-4 font-display text-lg font-bold">
-            Xem lại đáp án
-          </h3>
+          <h3 className="mb-4 text-lg font-semibold">Xem lại đáp án</h3>
           <div className="space-y-5">
             {quiz.map((q, i) => (
-              <div
-                key={q.id}
-                className="surface rounded-2xl border p-5 shadow-card"
-              >
+              <div key={q.id} className="rounded-lg border p-5">
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="muted font-mono text-xs">Câu {i + 1}</span>
+                  <span className="font-mono text-xs text-muted-foreground">
+                    Câu {i + 1}
+                  </span>
                   {answers[i] === q.correctAnswer ? (
-                    <Badge variant="green">Đúng</Badge>
+                    <Badge variant="success">Đúng</Badge>
                   ) : (
-                    <Badge variant="red">Sai</Badge>
+                    <Badge variant="destructive">Sai</Badge>
                   )}
                 </div>
                 <QuestionCard
@@ -131,20 +131,31 @@ export function Quiz() {
 
   return (
     <div className="space-y-5">
-      <div className="surface rounded-2xl border p-3 shadow-card">
+      <div className="rounded-lg border p-3">
         <div className="mb-2 flex items-center justify-between px-1 text-sm">
           <span className="font-semibold">
             Câu {index + 1}
-            <span className="muted">/{quiz.length}</span>
+            <span className="text-muted-foreground">/{quiz.length}</span>
           </span>
-          <span className="muted font-mono text-xs">
+          <span className="font-mono text-xs text-muted-foreground">
             Hoàn thành {Math.round(completion)}%
           </span>
         </div>
-        <ProgressBar value={completion} />
+        <div
+          role="progressbar"
+          aria-valuenow={Math.round(completion)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          className="h-2 w-full overflow-hidden rounded-full bg-muted"
+        >
+          <div
+            className="h-full rounded-full bg-primary transition-all"
+            style={{ width: `${completion}%` }}
+          />
+        </div>
       </div>
 
-      <div className="surface rounded-2xl border p-5 shadow-card sm:p-7">
+      <div className="rounded-lg border p-5 sm:p-7">
         <QuestionCard
           question={current}
           selected={answers[index]}
@@ -153,30 +164,23 @@ export function Quiz() {
         />
 
         <div className="mt-6 flex items-center justify-between gap-3">
-          <button
+          <Button
+            variant="ghost"
             onClick={() => setIndex(Math.max(0, index - 1))}
             disabled={index === 0}
-            className="muted rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:text-[var(--text)] disabled:opacity-40"
           >
             ← Trước
-          </button>
+          </Button>
 
           {!revealed[index] ? (
-            <button
-              onClick={reveal}
-              disabled={answers[index] === null}
-              className="rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700 focus-visible:focus-ring disabled:opacity-40"
-            >
+            <Button onClick={reveal} disabled={answers[index] === null}>
               Kiểm tra đáp án
-            </button>
+            </Button>
           ) : (
-            <button
-              onClick={next}
-              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700 focus-visible:focus-ring"
-            >
+            <Button onClick={next}>
               {index === quiz.length - 1 ? "Xem kết quả" : "Câu tiếp"}
-              <Icon name="arrow" size={16} />
-            </button>
+              <ArrowRight />
+            </Button>
           )}
         </div>
       </div>

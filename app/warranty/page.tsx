@@ -1,136 +1,110 @@
+import type { Metadata } from "next";
+
 import {
   warrantyPackages,
   warrantyConditions,
   warrantyIntake,
   warrantyCenters,
 } from "@/data/warranty";
-import { Card, SectionHeading, DataRow } from "@/components/Card";
-import { Badge } from "@/components/Badge";
-import { Icon } from "@/components/Icon";
+import { DocPage } from "@/components/docs/doc-page";
+import { H2, H3, P, Ul } from "@/components/docs/typography";
+import { Callout } from "@/components/docs/callout";
+import { Badge } from "@/components/ui/badge";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
+export const metadata: Metadata = { title: "Bảo hành & Đổi trả" };
 
 export default function WarrantyPage() {
   return (
-    <div className="space-y-10">
-      <SectionHeading
-        eyebrow="Phần 3 · Bảo hành & đổi trả"
-        title="Chính sách bảo hành"
-        desc="Các gói bảo hành, điều kiện áp dụng, các trường hợp từ chối và địa chỉ tiếp nhận."
-      />
-
-      {/* 3.1 Các gói */}
-      <section id="goi-bao-hanh">
-        <h2 className="mb-4 flex items-center gap-2 font-display text-xl font-bold">
-          <span className="font-mono text-sm text-brand-500">3.1</span> Các gói bảo hành
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {warrantyPackages.map((p) => (
-            <Card
-              key={p.id}
-              id={p.id}
-              className={`relative p-5 ${
-                p.highlight ? "border-brand-500/60 shadow-glow" : ""
-              }`}
-            >
-              {p.highlight && (
-                <span className="absolute -top-2.5 left-5">
-                  <Badge variant="brand">Phổ biến</Badge>
-                </span>
-              )}
-              <h3 className="font-display text-lg font-extrabold">{p.name}</h3>
-              <div className="mt-1 font-mono text-2xl font-bold text-brand-600 dark:text-brand-400">
-                {p.price}
-              </div>
-              <div className="mt-4 space-y-0">
-                <DataRow label="1 đổi 1 (lỗi NSX)" value={p.oneToOne} />
-                <DataRow label="Bảo hành phần cứng" value={p.hardware} />
-                <DataRow label="Bảo hành độ SIM/CNC" value={p.simCnc} />
-              </div>
-            </Card>
+    <DocPage
+      title="Bảo hành & Đổi trả"
+      description="Ba gói bảo hành, điều kiện áp dụng và các địa chỉ bảo hành / CNC."
+    >
+      <H2 id="cac-goi-bao-hanh">3.1. Các gói bảo hành</H2>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Gói</TableHead>
+            <TableHead>Giá</TableHead>
+            <TableHead>1 đổi 1 (lỗi NSX)</TableHead>
+            <TableHead>BH phần cứng</TableHead>
+            <TableHead>BH độ SIM/CNC</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {warrantyPackages.map((pkg) => (
+            <TableRow key={pkg.id} id={pkg.id}>
+              <TableCell className="font-medium">
+                {pkg.name}
+                {pkg.highlight && (
+                  <Badge className="ml-2" variant="secondary">
+                    Phổ biến
+                  </Badge>
+                )}
+              </TableCell>
+              <TableCell>{pkg.price}</TableCell>
+              <TableCell>{pkg.oneToOne}</TableCell>
+              <TableCell>{pkg.hardware}</TableCell>
+              <TableCell>{pkg.simCnc}</TableCell>
+            </TableRow>
           ))}
-        </div>
-      </section>
+        </TableBody>
+      </Table>
 
-      {/* 3.2 Điều kiện */}
-      <section id="dieu-kien">
-        <h2 className="mb-4 flex items-center gap-2 font-display text-xl font-bold">
-          <span className="font-mono text-sm text-brand-500">3.2</span> Điều kiện & từ chối bảo hành
-        </h2>
-        <div className="grid gap-4 lg:grid-cols-2">
-          <Card className="p-5">
-            <h3 className="mb-3 flex items-center gap-1.5 font-semibold text-emerald-600 dark:text-emerald-400">
-              <Icon name="check" size={16} /> Điều kiện bắt buộc
-            </h3>
-            <ul className="space-y-2 text-sm">
-              {warrantyConditions.required.map((c, i) => (
-                <li key={i} className="flex gap-2">
-                  <Icon name="check" size={15} className="mt-0.5 shrink-0 text-emerald-500" />
-                  <span>{c}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-          <Card className="p-5">
-            <h3 className="mb-3 flex items-center gap-1.5 font-semibold text-red-600 dark:text-red-400">
-              <Icon name="x" size={16} /> Trường hợp từ chối
-            </h3>
-            <ul className="space-y-2 text-sm">
-              {warrantyConditions.rejected.map((c, i) => (
-                <li key={i} className="flex gap-2">
-                  <Icon name="x" size={15} className="mt-0.5 shrink-0 text-red-500" />
-                  <span>{c}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        </div>
-      </section>
+      <H2 id="dieu-kien">3.2. Điều kiện bảo hành &amp; Từ chối bảo hành</H2>
+      <H3 id="dieu-kien-bat-buoc">Điều kiện bắt buộc</H3>
+      <Ul>
+        {warrantyConditions.required.map((c) => (
+          <li key={c}>{c}</li>
+        ))}
+      </Ul>
+      <Callout variant="warning" title="Các trường hợp TỪ CHỐI bảo hành">
+        <ul>
+          {warrantyConditions.rejected.map((c) => (
+            <li key={c}>{c}</li>
+          ))}
+        </ul>
+      </Callout>
 
-      {/* 3.3 Quy trình & địa chỉ */}
-      <section id="dia-chi">
-        <h2 className="mb-4 flex items-center gap-2 font-display text-xl font-bold">
-          <span className="font-mono text-sm text-brand-500">3.3</span> Quy trình tiếp nhận & địa chỉ
-        </h2>
-
-        <div className="grid gap-4 lg:grid-cols-2">
-          <Card className="p-5">
-            <h3 className="mb-2 font-semibold">Khách cửa hàng</h3>
-            <ul className="muted space-y-2 text-sm">
-              {warrantyIntake.storeCustomer.map((c, i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="text-brand-500">•</span>
-                  <span>{c}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-          <Card className="p-5">
-            <h3 className="mb-2 font-semibold">Khách ngoài</h3>
-            <p className="muted text-sm">{warrantyIntake.outsideCustomer}</p>
-          </Card>
-        </div>
-
-        <h3 className="mb-3 mt-6 font-semibold">Địa chỉ bảo hành / CNC</h3>
-        <div className="grid gap-3 sm:grid-cols-3">
+      <H2 id="dia-chi">3.3. Các địa chỉ bảo hành / CNC</H2>
+      <H3 id="khach-cua-hang">Đối với khách cửa hàng</H3>
+      <P>Khách đưa máy đến bảo hành độ SIM / phần cứng:</P>
+      <Ul>
+        {warrantyIntake.storeCustomer.map((s) => (
+          <li key={s}>{s}</li>
+        ))}
+      </Ul>
+      <H3 id="khach-ngoai">Đối với khách ngoài</H3>
+      <P>{warrantyIntake.outsideCustomer}</P>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Cửa hàng</TableHead>
+            <TableHead>Địa chỉ</TableHead>
+            <TableHead>Họ tên</TableHead>
+            <TableHead>SĐT</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {warrantyCenters.map((c) => (
-            <Card key={c.shop} className="p-5">
-              <div className="flex items-center gap-2">
-                <Icon name="wrench" size={16} className="text-brand-500" />
-                <h4 className="font-display font-bold">{c.shop}</h4>
-              </div>
-              <p className="muted mt-2 text-sm">{c.address}</p>
-              <div className="hairline mt-3 border-t pt-3 text-sm">
-                <div>{c.contact}</div>
-                <a
-                  href={`tel:${c.phone}`}
-                  className="font-mono font-semibold text-brand-600 dark:text-brand-400"
-                >
-                  {c.phone}
-                </a>
-              </div>
-            </Card>
+            <TableRow key={c.shop}>
+              <TableCell className="font-medium">{c.shop}</TableCell>
+              <TableCell>{c.address}</TableCell>
+              <TableCell>{c.contact}</TableCell>
+              <TableCell className="whitespace-nowrap font-mono text-xs">
+                {c.phone}
+              </TableCell>
+            </TableRow>
           ))}
-        </div>
-      </section>
-    </div>
+        </TableBody>
+      </Table>
+    </DocPage>
   );
 }
