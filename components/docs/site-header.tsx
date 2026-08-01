@@ -67,9 +67,7 @@ export function SiteHeader() {
 
         <Link href="/" className="flex items-center gap-2">
           <Logo />
-          <span className="hidden text-sm text-muted-foreground md:inline">
-            · Cẩm nang nội bộ
-          </span>
+         
         </Link>
 
         <div className="ml-auto flex items-center gap-2">
