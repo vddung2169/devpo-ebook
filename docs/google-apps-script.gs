@@ -19,6 +19,7 @@ var HEADERS = [
   "Đã làm (câu)",
   "Số lần refresh",
   "Session ID",
+  "Bộ đề",
 ];
 
 function doGet() {
@@ -64,7 +65,24 @@ function getSheet_() {
     sheet.setColumnWidths(1, 2, 150);
     sheet.setColumnWidth(HEADERS.indexOf("Session ID") + 1, 260);
   }
+  migrateHeaders_(sheet);
   return sheet;
+}
+
+/** Sheet tạo từ bản script cũ chưa có cột "Bộ đề" — tự thêm vào cuối hàng tiêu đề */
+function migrateHeaders_(sheet) {
+  var lastCol = sheet.getLastColumn();
+  var current = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+  for (var i = 0; i < HEADERS.length; i++) {
+    if (current.indexOf(HEADERS[i]) === -1) {
+      lastCol += 1;
+      sheet
+        .getRange(1, lastCol)
+        .setValue(HEADERS[i])
+        .setFontWeight("bold")
+        .setBackground("#f1f3f4");
+    }
+  }
 }
 
 function col_(name) {
@@ -107,6 +125,7 @@ function handleStart_(sheet, d) {
   row[col_("Đã làm (câu)") - 1] = 0;
   row[col_("Số lần refresh") - 1] = d.refreshCount || 0;
   row[col_("Session ID") - 1] = d.sessionId;
+  row[col_("Bộ đề") - 1] = d.quiz || "";
   sheet.appendRow(row);
 }
 
@@ -135,6 +154,7 @@ function handleFinish_(sheet, d) {
   sheet.getRange(r, col_("Thời gian làm")).setValue(formatDuration_(d.durationSeconds));
   sheet.getRange(r, col_("Đã làm (câu)")).setValue(d.answered);
   sheet.getRange(r, col_("Số lần refresh")).setValue(d.refreshCount || 0);
+  if (d.quiz) sheet.getRange(r, col_("Bộ đề")).setValue(d.quiz);
 }
 
 function formatDuration_(seconds) {

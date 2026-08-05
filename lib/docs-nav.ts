@@ -41,6 +41,7 @@ export const docsNav: DocGroup[] = [
       { title: "Thuật ngữ nhanh", href: "/knowledge", desc: "Tra cứu khái niệm Lock, EID, TMSI…" },
       { title: "FAQ", href: "/faq", desc: "Câu hỏi khách thường gặp" },
       { title: "Test nhân viên", href: "/test", desc: "Kiểm tra kiến thức" },
+      { title: "Test nhân viên — Bộ đề mới", href: "/quiz-new", desc: "Bộ đề số 2 — 30 câu hỏi mới" },
     ],
   },
 ];

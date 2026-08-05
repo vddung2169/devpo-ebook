@@ -20,8 +20,17 @@ import { Input } from "@/components/ui/input";
 import { Callout } from "@/components/docs/callout";
 
 const QUIZ_SIZE = 30;
-const STORAGE_KEY = "devpo-quiz-session-v1";
+const DEFAULT_STORAGE_KEY = "devpo-quiz-session-v1";
 const PERSON_KEY = "devpo-quiz-person-v1";
+
+interface QuizProps {
+  /** Bộ câu hỏi dùng cho bài test — mặc định là bộ gốc data/questions.ts */
+  questions?: QuizQuestion[];
+  /** Key localStorage riêng cho từng bộ đề để bài làm dở không đè lên nhau */
+  storageKey?: string;
+  /** Tên bộ đề ghi kèm vào Google Sheet (cột "Bộ đề") */
+  quizLabel?: string;
+}
 
 interface QuizSession {
   sessionId: string;
@@ -39,8 +48,6 @@ interface QuizSession {
 type Phase = "intro" | "running" | "finished";
 type SubmitState = "saving" | "saved" | "error";
 
-const questionById = new Map(allQuestions.map((q) => [q.id, q]));
-
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -57,9 +64,9 @@ function newSessionId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-function loadSession(): QuizSession | null {
+function loadSession(storageKey: string): QuizSession | null {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(storageKey);
     if (!raw) return null;
     const s = JSON.parse(raw) as QuizSession;
     if (!s.sessionId || !Array.isArray(s.questionIds)) return null;
@@ -69,17 +76,17 @@ function loadSession(): QuizSession | null {
   }
 }
 
-function persistSession(s: QuizSession) {
+function persistSession(storageKey: string, s: QuizSession) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
+    localStorage.setItem(storageKey, JSON.stringify(s));
   } catch {
     // localStorage đầy / bị chặn — bài vẫn làm được, chỉ mất khả năng khôi phục
   }
 }
 
-function clearSession() {
+function clearSession(storageKey: string) {
   try {
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(storageKey);
   } catch {}
 }
 
@@ -99,7 +106,15 @@ function formatElapsed(seconds: number): string {
   return `${m}:${String(s).padStart(2, "0")}`;
 }
 
-export function Quiz() {
+export function Quiz({
+  questions = allQuestions,
+  storageKey = DEFAULT_STORAGE_KEY,
+  quizLabel = "Bộ gốc",
+}: QuizProps = {}) {
+  const questionById = useMemo(
+    () => new Map(questions.map((q) => [q.id, q])),
+    [questions]
+  );
   const [phase, setPhase] = useState<Phase>("intro");
   const [session, setSession] = useState<QuizSession | null>(null);
   const [resumed, setResumed] = useState(false);
@@ -124,10 +139,10 @@ export function Quiz() {
 
   // Khôi phục bài làm dở khi mở lại / tải lại trang (chống làm lại từ đầu)
   useEffect(() => {
-    const saved = loadSession();
+    const saved = loadSession(storageKey);
     if (saved) {
       const restored = { ...saved, refreshCount: saved.refreshCount + 1 };
-      persistSession(restored);
+      persistSession(storageKey, restored);
       setSession(restored);
       setName(restored.name);
       setPhone(restored.phone);
@@ -135,6 +150,7 @@ export function Quiz() {
       setResumed(true);
       track({
         type: "progress",
+        quiz: quizLabel,
         sessionId: restored.sessionId,
         answered: restored.revealed.filter(Boolean).length,
         refreshCount: restored.refreshCount,
@@ -147,7 +163,8 @@ export function Quiz() {
       } catch {}
     }
     setRestoring(false);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storageKey]);
 
   const quiz = useMemo<QuizQuestion[]>(
     () =>
@@ -156,14 +173,15 @@ export function Quiz() {
             .map((id) => questionById.get(id))
             .filter((q): q is QuizQuestion => Boolean(q))
         : [],
-    [session?.sessionId, session?.questionIds]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [session?.sessionId, session?.questionIds, questionById]
   );
 
   const update = (patch: Partial<QuizSession>) => {
     setSession((prev) => {
       if (!prev) return prev;
       const nextSession = { ...prev, ...patch };
-      persistSession(nextSession);
+      persistSession(storageKey, nextSession);
       return nextSession;
     });
   };
@@ -187,9 +205,9 @@ export function Quiz() {
       );
     } catch {}
 
-    const picked = shuffle(allQuestions).slice(
+    const picked = shuffle(questions).slice(
       0,
-      Math.min(QUIZ_SIZE, allQuestions.length)
+      Math.min(QUIZ_SIZE, questions.length)
     );
     const s: QuizSession = {
       sessionId: newSessionId(),
@@ -202,12 +220,13 @@ export function Quiz() {
       startedAt: Date.now(),
       refreshCount: 0,
     };
-    persistSession(s);
+    persistSession(storageKey, s);
     setSession(s);
     setResumed(false);
     setPhase("running");
     track({
       type: "start",
+      quiz: quizLabel,
       sessionId: s.sessionId,
       name: s.name,
       phone: s.phone,
@@ -231,6 +250,7 @@ export function Quiz() {
     update({ revealed });
     track({
       type: "progress",
+      quiz: quizLabel,
       sessionId: session.sessionId,
       answered: revealed.filter(Boolean).length,
       refreshCount: session.refreshCount,
@@ -245,7 +265,7 @@ export function Quiz() {
       (s, q, i) => (session.answers[i] === q.correctAnswer ? s + 1 : s),
       0
     );
-    clearSession();
+    clearSession(storageKey);
     setPhase("finished");
     setSubmitState("saving");
     try {
@@ -254,6 +274,7 @@ export function Quiz() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type: "finish",
+          quiz: quizLabel,
           sessionId: session.sessionId,
           name: session.name,
           phone: session.phone,
@@ -331,7 +352,7 @@ export function Quiz() {
               <p className="text-sm text-destructive">{formError}</p>
             )}
             <Button className="w-full" onClick={start}>
-              Bắt đầu làm bài ({Math.min(QUIZ_SIZE, allQuestions.length)} câu)
+              Bắt đầu làm bài ({Math.min(QUIZ_SIZE, questions.length)} câu)
               <ArrowRight />
             </Button>
           </div>

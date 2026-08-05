@@ -4,6 +4,11 @@ Kết quả bài test nhân viên (họ tên, SĐT, điểm, thời gian, số l
 được ghi tự động vào Google Sheet:
 <https://docs.google.com/spreadsheets/d/1LA7xtpnMaZIxIFBPZD8OZiSWR9cc7-QeqXZ49hnKBMQ/edit>
 
+> ✅ **Đã cài đặt xong ngày 05/08/2026** — Apps Script "DEV PO Quiz Webhook" đã deploy
+> và `GOOGLE_SCRIPT_URL` đã khai báo trên Vercel (production / preview / development).
+> Các bước dưới đây chỉ cần làm lại khi **cập nhật code script** (dán lại file .gs rồi
+> Deploy → Manage deployments → Edit → New version) hoặc đổi Sheet.
+
 Cần cài đặt **1 lần duy nhất** theo 2 bước dưới đây (khoảng 5 phút).
 
 ## Bước 1 — Cài Apps Script vào Google Sheet
@@ -55,6 +60,7 @@ Sheet tab **"Kết quả test"** được tự tạo với các cột:
 | Đã làm (câu) | Số câu đã trả lời — cập nhật trực tiếp trong lúc làm |
 | Số lần refresh | Số lần thoát / tải lại trang giữa chừng |
 | Session ID | Mã phiên làm bài (để đối chiếu) |
+| Bộ đề | Bài làm từ bộ đề nào: `Bộ gốc` (/test) hay `Bộ đề mới` (/quiz-new) |
 
 ## Cách phát hiện nhân viên "reset để làm lại"
 
