@@ -124,28 +124,171 @@ export const knowledgeCategories = [
   "Giá & Phụ kiện",
 ];
 
-// 5.2 Thư viện hướng dẫn (link cho khách)
-export const guideLinks = [
-  "Cách sử dụng SIM ghép 1 SIM",
-  "Cách sử dụng SIM ghép 2 SIM",
-  "Fix điểm truy cập cá nhân (Hotspot)",
-  "Fix lỗi danh bạ (hiện +84)",
-  "Fix lỗi mất sóng, chậm thông báo, không xoay ngang màn hình (máy độ IC)",
-  "Cách lắp SIM EID 1 SIM",
-  "Cách lắp SIM EID 2 SIM",
+// 5.2 Thư viện hướng dẫn — link chính thức của shop
+export const officialLinks: { title: string; url: string }[] = [
+  { title: "Website", url: "https://devpo.vn" },
+  { title: "Beacons (tổng hợp link)", url: "https://beacons.ai/devpo" },
 ];
 
-// Video quan trọng về sản phẩm (Thông tin, kiến thức về iPhone Lock)
-export const videoLinks = [
-  "https://vt.tiktok.com/ZGdarKKf8/",
-  "https://vt.tiktok.com/ZGHGj1RNJC14K-HCqB5/",
-  "https://vt.tiktok.com/ZGHGj1RNJC1qo-KPg62/",
-  "https://vt.tiktok.com/ZGdarcEmK/",
-  "https://vt.tiktok.com/ZGdahrfgt/",
-];
+export interface VideoTopic {
+  /** Tên chủ đề video */
+  topic: string;
+  /** Một chủ đề có thể gồm nhiều video */
+  urls: string[];
+}
 
-// Tổng hợp về MDM & Lock — TODO: chờ bổ sung URL từ quản lý
-export const mdmVideoLinks: { title: string; url: string | null }[] = [
-  { title: "Thiết bị MDM là gì?", url: null },
-  { title: "Video MDM là gì?", url: null },
+export interface VideoSection {
+  id: string;
+  title: string;
+  topics: VideoTopic[];
+}
+
+/**
+ * Tổng hợp video iPhone Lock / Quốc tế / iPad / MDM 2026.
+ * Nguồn: danh sách chính thức của shop (cập nhật 12/10/2026).
+ */
+export const videoLibrary: VideoSection[] = [
+  {
+    id: "kien-thuc-lock",
+    title: "Kiến thức iPhone Lock",
+    topics: [
+      {
+        topic: "Thông tin về iPhone Lock năm 2026",
+        urls: [
+          "https://vt.tiktok.com/ZSx8QKxxh/",
+          "https://vt.tiktok.com/ZGdx2CTKv/",
+        ],
+      },
+      {
+        topic: "Tin mới về iPhone Lock",
+        urls: [
+          "https://vt.tiktok.com/ZGdx66bQV/",
+          "https://vt.tiktok.com/ZSx8Qbyqr/",
+        ],
+      },
+      {
+        topic: "Thông tin, kiến thức về iPhone Lock",
+        urls: [
+          "https://vt.tiktok.com/ZGduqTv8t/",
+          "https://vt.tiktok.com/ZGduq3uor/",
+          "https://vt.tiktok.com/ZGduqoDpU/",
+          "https://vt.tiktok.com/ZGduqT4QG/",
+          "https://vt.tiktok.com/ZGdubj3rG/",
+        ],
+      },
+      {
+        topic: "Giải đáp 999 câu hỏi",
+        urls: [
+          "https://vt.tiktok.com/ZGdx2uxjR/",
+          "https://vt.tiktok.com/ZGduqE1jj/",
+        ],
+      },
+      {
+        topic: "Quốc tế nửa mùa là gì?",
+        urls: ["https://vt.tiktok.com/ZGdx2pJTW/"],
+      },
+    ],
+  },
+  {
+    id: "mdm",
+    title: "MDM",
+    topics: [
+      {
+        topic: "Thiết bị MDM là gì",
+        urls: [
+          "https://vt.tiktok.com/ZGdx2ChPb/",
+          "https://vt.tiktok.com/ZGdx29qgn/",
+          "https://vt.tiktok.com/ZGdQvnYTg/",
+        ],
+      },
+      {
+        topic: "Tool MDM",
+        urls: ["https://vt.tiktok.com/ZGdx2mQm2/"],
+      },
+    ],
+  },
+  {
+    id: "huong-dan-sim",
+    title: "Hướng dẫn SIM & eSIM",
+    topics: [
+      {
+        topic: "eSIM iPhone Lock",
+        urls: ["https://vt.tiktok.com/ZSQ6aofaG/"],
+      },
+      {
+        topic: "Cách lắp SIM EID 1 SIM",
+        urls: ["https://vt.tiktok.com/ZGdx2PvEG/"],
+      },
+      {
+        topic: "Cách lắp SIM EID 2 SIM",
+        urls: ["https://vt.tiktok.com/ZGdub2hmF/"],
+      },
+      {
+        topic: "Cách lắp SIM ghép 2 mảnh đúng cách",
+        urls: ["https://vt.tiktok.com/ZGdx2fHfE/"],
+      },
+      {
+        topic: "Tái sử dụng SIM ghép khi hỏng 1 mặt",
+        urls: ["https://vt.tiktok.com/ZGdx2ArmK/"],
+      },
+    ],
+  },
+  {
+    id: "fix-loi",
+    title: "Fix lỗi",
+    topics: [
+      {
+        topic: "Fix lỗi iPhone Lock EID mới",
+        urls: ["https://vt.tiktok.com/ZGdx2C2L5/"],
+      },
+      {
+        topic: "Fix lỗi không update iOS được",
+        urls: ["https://vt.tiktok.com/ZGdx2pGs4/"],
+      },
+      {
+        topic: "Fix lỗi nút mở nhanh camera không hoạt động",
+        urls: ["https://vt.tiktok.com/ZGdx69Uph/"],
+      },
+      {
+        topic: "Fix lỗi danh bạ khi ghép SIM TMSI/QPE",
+        urls: ["https://vt.tiktok.com/ZGdx29mja/"],
+      },
+      {
+        topic: "Fix lỗi điểm truy cập cá nhân",
+        urls: ["https://vt.tiktok.com/ZGdx25x3v/"],
+      },
+    ],
+  },
+  {
+    id: "meo-thu-thuat",
+    title: "Mẹo & thủ thuật",
+    topics: [
+      {
+        topic: "Mẹo hay trên iPhone 2026",
+        urls: ["https://vt.tiktok.com/ZSx8QE1pP/"],
+      },
+      {
+        topic: "Respring iOS 26",
+        urls: ["https://vt.tiktok.com/ZGdub1XJC/"],
+      },
+    ],
+  },
+  {
+    id: "ipad",
+    title: "iPad",
+    topics: [
+      {
+        topic: "Chọn iPad theo mệnh",
+        urls: ["https://vt.tiktok.com/ZGdQwkwTK/"],
+      },
+      {
+        topic: "iPad Gen 7 - 8 - 9",
+        urls: ["https://vt.tiktok.com/ZGdQwhdwD/"],
+      },
+      {
+        topic: "Game hay trên iPad (P1)",
+        urls: ["https://vt.tiktok.com/ZGdQwxL8A/"],
+      },
+    ],
+  },
 ];

@@ -166,7 +166,7 @@ export const faqs: FaqItem[] = [
     id: "bao-hanh-khach-ngoai-o-dau",
     question: "Khách ngoài cần bảo hành / độ SIM thì mang đến đâu?",
     answer:
-      "Báo khách qua 1 trong 3 địa chỉ: Tâm Táo — 9A Đường số 6, KP5, Linh Tây, Thủ Đức (A Tâm 0786789636); QH store — 5 đường Năm Châu, P11, Tân Bình (A Hậu 0935869679); Exshop — 95 Thành Mỹ, P8, Tân Bình (A Vương 0869178178).",
+      "Báo khách qua 1 trong 2 địa chỉ: Tâm Táo — 135 Lê Lợi, P. Hạnh Thông, TP HCM (Nguyễn Đức Tâm 0786789636); Exshop — 95 Thành Mỹ, P8, Tân Bình (A Vương 0869178178).",
     category: "Bảo hành",
   },
 ];

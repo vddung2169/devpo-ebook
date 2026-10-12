@@ -88,9 +88,9 @@ export const searchIndex: SearchEntry[] = [
   },
   {
     title: "Thư viện hướng dẫn",
-    subtitle: "Link gửi khách + video về iPhone Lock, MDM",
+    subtitle: "Tổng hợp video iPhone Lock, MDM, SIM, fix lỗi, iPad",
     href: "/library",
     section: "Thư viện",
-    keywords: "thư viện hướng dẫn link video tiktok sim ghép hotspot danh bạ mdm lock",
+    keywords: "thư viện hướng dẫn link video tiktok esim sim ghép eid tmsi hotspot điểm truy cập cá nhân danh bạ mdm tool mdm lock quốc tế nửa mùa respring ipad mẹo hay fix lỗi update ios camera beacons devpo.vn",
   },
 ];

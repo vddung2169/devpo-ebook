@@ -363,14 +363,14 @@ export const questionsNew: QuizQuestion[] = [
     question:
       "Khách NGOÀI cần bảo hành / độ SIM, có thể qua địa chỉ nào sau đây?",
     options: [
-      "Tâm Táo — 9A Đường số 6, KP5, Linh Tây, Thủ Đức (A Tâm)",
-      "QH store — quận 1",
+      "Tâm Táo — 135 Lê Lợi, P. Hạnh Thông, TP HCM (A Tâm)",
+      "Bất kỳ trung tâm Apple Store chính hãng nào",
       "Exshop — quận 7",
       "Chỉ được về đúng cửa hàng DEV PỒ",
     ],
     correctAnswer: 0,
     explanation:
-      "3 địa chỉ bảo hành/CNC cho khách ngoài: Tâm Táo (9A Đường số 6, Linh Tây, Thủ Đức — A Tâm 0786789636), QH store (5 Năm Châu, P11, Tân Bình — A Hậu), Exshop (95 Thành Mỹ, P8, Tân Bình — A Vương).",
+      "2 địa chỉ bảo hành/CNC cho khách ngoài: Tâm Táo (135 Lê Lợi, P. Hạnh Thông, TP HCM — Nguyễn Đức Tâm 0786789636), Exshop (95 Thành Mỹ, P8, Tân Bình — A Vương 0869178178).",
     category: "Bảo hành",
     difficulty: "Khó",
   },

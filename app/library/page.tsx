@@ -1,7 +1,8 @@
+import * as React from "react";
 import type { Metadata } from "next";
 import { ExternalLink, PlayCircle } from "lucide-react";
 
-import { guideLinks, videoLinks, mdmVideoLinks } from "@/data/knowledge";
+import { officialLinks, videoLibrary } from "@/data/knowledge";
 import { DocPage } from "@/components/docs/doc-page";
 import { H2, P, Ul } from "@/components/docs/typography";
 import { Callout } from "@/components/docs/callout";
@@ -12,68 +13,59 @@ export default function LibraryPage() {
   return (
     <DocPage
       title="Thư viện hướng dẫn"
-      description="Các link hướng dẫn gửi cho khách khi cần hỗ trợ kỹ thuật và video quan trọng để hiểu rõ sản phẩm."
+      description="Tổng hợp video iPhone Lock / Quốc tế / iPad / MDM 2026 — gửi cho khách khi cần hỗ trợ kỹ thuật hoặc để nhân viên hiểu rõ sản phẩm."
     >
-      <H2 id="link-cho-khach">Link hướng dẫn cho khách</H2>
-      <P>Khi khách hàng cần hỗ trợ kỹ thuật, gửi đường link tương ứng:</P>
+      <H2 id="link-chinh-thuc">Link chính thức</H2>
       <Ul>
-        {guideLinks.map((g) => (
-          <li key={g}>{g}</li>
-        ))}
-      </Ul>
-
-      <H2 id="video-mdm-lock">Tổng hợp về MDM &amp; Lock</H2>
-      <Ul>
-        {mdmVideoLinks.map((v) => (
-          <li key={v.title}>
-            {v.url ? (
-              <a
-                href={v.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 font-medium underline underline-offset-4"
-              >
-                {v.title}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            ) : (
-              <span>
-                {v.title}{" "}
-                <span className="text-xs text-muted-foreground">
-                  (link đang cập nhật)
-                </span>
-              </span>
-            )}
+        {officialLinks.map((l) => (
+          <li key={l.url}>
+            {l.title}:{" "}
+            <a
+              href={l.url}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 font-medium underline underline-offset-4"
+            >
+              {l.url.replace(/^https?:\/\//, "")}
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
           </li>
         ))}
       </Ul>
       <Callout variant="note">
         <p>
-          Link video MDM đang chờ quản lý bổ sung — sẽ cập nhật vào trang này
-          ngay khi có.
+          Khi khách cần hỗ trợ kỹ thuật, tìm đúng chủ đề bên dưới và gửi link
+          video tương ứng.
         </p>
       </Callout>
 
-      <H2 id="video-iphone-lock">Thông tin, kiến thức về iPhone Lock</H2>
-      <P>
-        Tập hợp video quan trọng để nhân viên (và khách hàng) hiểu rõ về sản
-        phẩm:
-      </P>
-      <Ul>
-        {videoLinks.map((url) => (
-          <li key={url}>
-            <a
-              href={url}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 font-medium underline underline-offset-4"
-            >
-              <PlayCircle className="h-4 w-4" />
-              {url}
-            </a>
-          </li>
-        ))}
-      </Ul>
+      {videoLibrary.map((section) => (
+        <React.Fragment key={section.id}>
+          <H2 id={section.id}>{section.title}</H2>
+          <Ul>
+            {section.topics.map((t) => (
+              <li key={t.topic}>
+                <P className="mb-1 font-medium">{t.topic}</P>
+                <ul className="ml-1 space-y-1">
+                  {t.urls.map((url) => (
+                    <li key={url}>
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm underline underline-offset-4"
+                      >
+                        <PlayCircle className="h-4 w-4 shrink-0" />
+                        {url}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </Ul>
+        </React.Fragment>
+      ))}
     </DocPage>
   );
 }

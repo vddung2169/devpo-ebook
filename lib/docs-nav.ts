@@ -32,7 +32,7 @@ export const docsNav: DocGroup[] = [
       { title: "Quy trình OFFLINE", href: "/process/offline", desc: "Bán hàng tại cửa hàng, báo cáo ca" },
       { title: "Quy trình ONLINE", href: "/process/online", desc: "Bán hàng từ xa, form check máy" },
       { title: "CSKH & Xử lý sự cố", href: "/support", desc: "4 sự cố thường gặp" },
-      { title: "Thư viện hướng dẫn", href: "/library", desc: "Link gửi khách, video sản phẩm" },
+      { title: "Thư viện hướng dẫn", href: "/library", desc: "Tổng hợp video Lock, MDM, SIM, iPad" },
     ],
   },
   {

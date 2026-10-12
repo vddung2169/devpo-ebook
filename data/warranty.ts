@@ -51,22 +51,16 @@ export const warrantyIntake = {
     "Không check được thông tin bên độ SIM: tiếp nhận lại máy để check thông tin sau (hẹn 1 ngày sau lấy).",
   ],
   outsideCustomer:
-    "Báo khách qua 1 trong 3 địa chỉ bảo hành / CNC dưới đây.",
+    "Báo khách qua 1 trong 2 địa chỉ bảo hành / CNC dưới đây.",
 };
 
 // 3.3 Địa chỉ bảo hành / CNC (cho khách ngoài)
 export const warrantyCenters: WarrantyCenter[] = [
   {
     shop: "Tâm Táo",
-    address: "9A Đường số 6, KP5, Linh Tây, Thủ Đức",
-    contact: "Anh Tâm",
+    address: "135 Lê Lợi, P. Hạnh Thông, TP HCM",
+    contact: "Nguyễn Đức Tâm",
     phone: "0786789636",
-  },
-  {
-    shop: "QH store",
-    address: "5 đường Năm Châu, phường 11, Tân Bình",
-    contact: "Anh Hậu",
-    phone: "0935869679",
   },
   {
     shop: "Exshop",
